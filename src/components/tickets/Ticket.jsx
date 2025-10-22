@@ -21,6 +21,9 @@ export const Ticket = ({ ticket, name }) => {
     }, [employees, ticket])
 
 
+
+
+
     return (<section className="ticket">
         <header className="ticket-info">{ticket.id}</header>
         <div>{ticket.description}</div>
@@ -32,10 +35,10 @@ export const Ticket = ({ ticket, name }) => {
 
             </div>
             <div>
-            <div className="ticket-info">Emergency</div>
-            <div>{ticket.emergency ? "yes" : "no"}</div>
-        </div>
-    </footer>
+                <div className="ticket-info">Emergency</div>
+                <div>{ticket.emergency ? "yes" : "no"}</div>
+            </div>
+        </footer>
     </section >
     )
 
