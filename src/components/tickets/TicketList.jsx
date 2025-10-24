@@ -49,7 +49,7 @@ export const TicketList = () => {
      
       <article className="tickets">
         {filteredTickets.map((ticketObj) => {
-          return <Ticket ticket={ticketObj} name={"Joe"} key={ticketObj.id} />
+          return <Ticket ticket={ticketObj} key={ticketObj.id} />
         }
 
         )}
