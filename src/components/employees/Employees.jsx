@@ -1,14 +1,14 @@
 import { useEffect, useState } from "react";
 import { getAllEmployees } from "../../services/employeeService";
-import { User } from "../../Users/Users";
+import { User } from "../Users/Users";
 import "./Employees.css"
 
 export const EmployeeList = () => {
-    
+
     const [employees, setEmployees] = useState([])
-    
-    useEffect(()=>{
-        getAllEmployees().then((EmployeeArray)=> {
+
+    useEffect(() => {
+        getAllEmployees().then((EmployeeArray) => {
             setEmployees(EmployeeArray)
         })
 
@@ -17,7 +17,7 @@ export const EmployeeList = () => {
     return (
         <div className="employees">
             {employees.map((employeeObj) => {
-                return<User user={employeeObj} key ={employeeObj.id} />
+                return <User user={employeeObj} key={employeeObj.id} />
             }
 
             )}

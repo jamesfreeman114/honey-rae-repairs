@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { getNonStaffUsers } from "../../services/customerService";
-import { User } from "../../Users/Users";
+import { User } from "../Users/Users";
 import "./Customers.css"
 
 
@@ -16,8 +16,8 @@ export const CustomerList = () => {
     return (
         <div className="customers">
             {customers.map((customerObj) => {
-             return < User user={customerObj} key ={customerObj.id}/>
-                
+                return < User user={customerObj} key={customerObj.id} />
+
             }
 
             )}
