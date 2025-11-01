@@ -6,7 +6,7 @@ import { CustomerList } from "../components/customers/CustomersList"
 import { CustomerDetails } from "../components/customers/CustomerDetails"
 import { EmployeeList } from "../components/employees/Employees"
 import { EmployeeDetails } from "../components/employees/EmployeeDetails"
-import { useEffect } from "react"
+import { useEffect, useState } from "react"
 
 export const ApplicationViews = () => {
   
@@ -33,7 +33,7 @@ export const ApplicationViews = () => {
 
       }>
       <Route index element={<Welcome />} />
-      <Route path="tickets" element={<TicketList />} />
+      <Route path="tickets" element={<TicketList currentUser={currentUser}/>} />
       <Route path="customers">
         <Route index element={<CustomerList />} />
         <Route path=":customerId" element={<CustomerDetails />} />
