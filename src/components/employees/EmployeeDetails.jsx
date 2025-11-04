@@ -11,7 +11,7 @@ export const EmployeeDetails = () => {
     useEffect(()=>{
         getEmployeeByUserId(employeeId).then((data) => 
         {const employeeObj = data[0]
-        setEmployee(employeeObj)})
+        if (employeeObj) {setEmployee(employeeObj)}})
     }, [employeeId])
 
     return (
@@ -30,7 +30,7 @@ export const EmployeeDetails = () => {
                 {employee.rate}
             </div>
             <div>
-                <span className="employee-details">Currently working on {employee.employeeTickets?.length} tickets</span>
+                <span className="employee-details">Currently working on {employee.employeeTickets?.length || 0} tickets</span>
                 
             </div>
            

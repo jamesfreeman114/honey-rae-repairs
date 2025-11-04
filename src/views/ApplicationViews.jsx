@@ -7,6 +7,7 @@ import { CustomerDetails } from "../components/customers/CustomerDetails"
 import { EmployeeList } from "../components/employees/Employees"
 import { EmployeeDetails } from "../components/employees/EmployeeDetails"
 import { useEffect, useState } from "react"
+import { EmployeeForm } from "../components/forms/EmployeeForm"
 
 export const ApplicationViews = () => {
   
@@ -17,7 +18,7 @@ export const ApplicationViews = () => {
     const honeyUserObject = JSON.parse(localHoneyUser)
 
     setCurrentUser(honeyUserObject)
-  }, [])
+  }, [ ])
   
   return (
 
@@ -44,6 +45,7 @@ export const ApplicationViews = () => {
         <Route path=":employeeId" element={<EmployeeDetails />} />
 
       </Route>
+      <Route path="profile" element={< EmployeeForm currentUser={currentUser}/>}/>
     </Route>
     </Routes>
     )

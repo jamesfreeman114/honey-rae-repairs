@@ -1,6 +1,6 @@
 import "./Users.css"
 
-export const User = ( {user}) => {
+export const User = ( {user} ) => {
     return (
         <div className="user">
             <div>
