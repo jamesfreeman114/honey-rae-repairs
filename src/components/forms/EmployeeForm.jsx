@@ -79,7 +79,7 @@ export const EmployeeForm = ({ currentUser }) => {
             <fieldset>
                 <div className="form-group">
                     <button className="form-btn btn-primary"
-                        onClick={handleSave}
+                        onClick={(handleSave)}
                     >
                         Save Profile
                     </button>
