@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react"
 import { getAllEmployees } from "../../services/employeeService"
-import { assignTicket, updateTicket } from "../../services/ticketService"
+import { assignTicket, updateTicket, deleteTicket, getAllTickets } from "../../services/ticketService"
+import { TicketList } from "./TicketList"
 
 
 export const Ticket = ({ ticket, currentUser, getAndSetTickets }) => {
@@ -50,6 +51,14 @@ export const Ticket = ({ ticket, currentUser, getAndSetTickets }) => {
 
     }
 
+    const handleDelete = () => {
+        
+        deleteTicket(ticket.id).then(()=>{
+            getAndSetTickets()
+        })
+
+    }
+
 
 
 
@@ -83,6 +92,13 @@ export const Ticket = ({ ticket, currentUser, getAndSetTickets }) => {
                     ""
                     )}
 
+            {/* If the logged in user is not an employee then a button to delete the ticket should display */}
+
+                
+
+        </div>
+        <div className="btn-container" onClick={handleDelete}>
+            { !currentUser.isStaff ? (<button className="btn btn-warning">Delete</button>) : ("")} 
         </div>
     </footer>
     </section >

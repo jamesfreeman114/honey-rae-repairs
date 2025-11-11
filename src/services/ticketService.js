@@ -14,6 +14,8 @@ export const assignTicket = (employeeTicket) => {
 
 }
 
+
+
 export const updateTicket = (ticket) => {
     return fetch (`http://localhost:8088/serviceTickets/${ticket.id}`, {
         method: "PUT",
@@ -22,5 +24,11 @@ export const updateTicket = (ticket) => {
         },
         body: JSON.stringify(ticket),
 
+    })
+}
+
+export const deleteTicket = (ticketId) => {
+    return fetch (`http://localhost:8088/serviceTickets/${ticketId}`, {
+        method: "DELETE"
     })
 }

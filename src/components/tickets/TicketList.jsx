@@ -9,12 +9,18 @@ export const TicketList = ({currentUser}) => {
 
   const [allTickets, setAllTickets] = useState([])
   const [showEmergencyOnly, setShowEmergencyOnly] = useState(false)
+  const [showOpenOnly, setShowOpenOnly] = useState(false)
   const [filteredTickets, setFilteredTickets] = useState([])
   const [searchTerm, setSearchTerm] = useState('')
 
   const getAndSetTickets = () => {
     getAllTickets().then((ticketArray) => {
-      setAllTickets(ticketArray)
+      if (currentUser.isStaff) {
+      setAllTickets(ticketArray) 
+    } else {
+      const customerTickets = ticketArray.filter(ticket => ticket.userId === currentUser.id)
+      setAllTickets(customerTickets)
+    }
 
     })
 
@@ -23,7 +29,16 @@ export const TicketList = ({currentUser}) => {
 
   useEffect(() => {
     getAndSetTickets()
-  }, [])
+  }, [currentUser])
+
+  useEffect(()=> {
+    if (showOpenOnly) {
+    const openTickets = allTickets.filter(ticket => 
+      ticket.dateCompleted === '' )
+      setFilteredTickets(openTickets)
+  } else (setFilteredTickets(allTickets))
+
+  }, [showOpenOnly, allTickets])
 
 
   useEffect(() => {
@@ -52,6 +67,8 @@ export const TicketList = ({currentUser}) => {
       <FilterBar 
         setShowEmergencyOnly = {setShowEmergencyOnly}
         setSearchTerm = {setSearchTerm}
+        setShowOpenOnly = {setShowOpenOnly}
+        currentUser= {currentUser}
       />
      
       <article className="tickets">
