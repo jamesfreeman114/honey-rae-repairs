@@ -1,9 +1,12 @@
+import { useNavigate } from "react-router-dom"
 
 export const FilterBar = ({
     setSearchTerm,
     setShowEmergencyOnly,
     currentUser,
-    setShowOpenOnly}) => {
+    setShowOpenOnly }) => {
+    
+    const navigate = useNavigate()
 
     return (
 
@@ -26,28 +29,30 @@ export const FilterBar = ({
                         className="ticket-search"
                     >
 
-                    </input> </> : 
-                    <>
-                    <button className="filter-btn btn-primary">
-                    Create Ticket
+                    </input> </> :
+                <>
+                    <button className="filter-btn btn-primary"
+                        onClick={() => {navigate("/tickets/create")}}
+                    >
+                        Create Ticket
                     </button>
                     <button className="filter-btn btn-info"
-                        onClick={()=>{
+                        onClick={() => {
                             setShowOpenOnly(true)
-                            console.log("only show the Open Tickets")
+
                         }}
                     >
-                    Open Tickets       
+                        Open Tickets
                     </button>
                     <button className="filter-btn btn-secondary"
-                        onClick={()=>{
+                        onClick={() => {
                             setShowOpenOnly(false)
-                            console.log("Show All My Tickets")
+
                         }}
                     >
                         All My Tickets
                     </button>
-                    </>}
+                </>}
 
         </div>
     )
